@@ -1,0 +1,17 @@
+package bookPack;
+
+import java.util.Arrays;
+
+public class Library {
+
+	Book[] books;
+
+public void print(Book ...books){
+	System.out.println(Arrays.deepToString(books));
+	System.out.print("Заголовки: ");
+	for(int i = 0; i < books.length; i++){
+	System.out.print(books[i].name + " ");
+	}
+}
+
+}
