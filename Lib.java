@@ -2,7 +2,7 @@ package library;
 
 public class Lib
 {
-	  Book[] books;
+	  private Book[] books; // С МАССИВОМ РАБОТАЕМ ЧЕРЕЗ НАШЫ МЕТОДЫ
 	  
 	  public Lib (int librarySize){
 		  this.books = new Book[librarySize];
