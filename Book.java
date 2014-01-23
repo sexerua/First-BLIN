@@ -11,17 +11,21 @@ public class Book
 	
 	
 	// КОНСТРУКТОРЫ НА ВЫБОР
-	public Book(String name,String...chapters){
+	public Book(String name){
 		this.name = name;
-		this.chapters = chapters;
 		this.author = "";
 		this.year = 0000;
 		this.chosen = false;
 	}
-	public Book(String name, int year,String...chapters){
+	public Book(String name, int year){
 		this.name = name;
-		this.chapters = chapters;
 		this.author = "";
+		this.year = year;
+		this.chosen = false;
+	}
+	public Book(String name, int year, String author){
+		this.name = name;
+		this.author = author;
 		this.year = year;
 		this.chosen = false;
 	}
