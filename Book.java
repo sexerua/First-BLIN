@@ -1,7 +1,6 @@
 package library;
 
 public class Book {
-  private int size;                 //размер массива глав
   private String name;             //Название книги
   private String author;           //Автор книги
   private int year;                //Год издательства книги
@@ -9,9 +8,16 @@ public class Book {
   
   public String[] chapters;        //Список глав книги
   
-  public Book(){
-    chapters = new chapters[size];
+  Book(){
+    
   }
   
   //Далее пойдут геттеры и сеттеры
+  String getName(){            // получить название книги
+    return name;
+  }
+  
+  void setName(String name){   // записать название книги
+    this.name = name;
+  }  
 }
