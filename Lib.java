@@ -1,10 +1,11 @@
 package library;
 
-public class Lib {
-  
-  public int size;
-  Book[] books = new Book[size];
-  Lib(){
-    
-  }
+public class Lib
+{
+	  Book[] books;
+	  
+	  public Lib (int librarySize){
+		  this.books = new Book[librarySize];
+	  }
 }
+
