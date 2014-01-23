@@ -13,13 +13,10 @@ public class Book
 	// КОНСТРУКТОРЫ НА ВЫБОР
 	public Book(String name){
 		this.name = name;
-		this.author = "";
-		this.year = 0000;
 		this.chosen = false;
 	}
 	public Book(String name, int year){
 		this.name = name;
-		this.author = "";
 		this.year = year;
 		this.chosen = false;
 	}
