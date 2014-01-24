@@ -2,6 +2,7 @@ package library;
 
 public class Lib
 {
+	  private boolean fullFormat = false; // ДЛЯ МЕТОДА №9  ФОРМАТ
 	  public Book[] books; // С МАССИВОМ РАБОТАЕМ ЧЕРЕЗ НАШЫ МЕТОДЫ
 	  
 	  public Lib (int librarySize){
@@ -64,7 +65,7 @@ public class Lib
 	  
 	  public void printAllBooks(){
 				 
-		 if (foolFormat==false){printInfo(0);}else{printInfo(1);}
+		 if (fullFormat==false){printInfo(0);}else{printInfo(1);}
 	  }
 	  
 	  // ПОМОЩНИК МЕТОДА ПРОСМОТР, который выводит инфо о книгах в библиотеке  0--краткий формат; 1--полный формат
@@ -111,7 +112,7 @@ public class Lib
 	   // МЕТОД №9 ФОРМАТ, можно и на булевский вариант переделать , int bookFormat  можно поменять на boolean bookFormat 
 	   // зависит от кода класса main
 	  public void format(int bookFormat){
-		  foolFormat = (bookFormat==0)? false:true;
+		  fullFormat = (bookFormat==0)? false:true;
 		  
 	  }
 	  
