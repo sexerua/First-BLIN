@@ -2,15 +2,14 @@ package library;
 
 public class Lib
 {
-	  private Book[] books; // С МАССИВОМ РАБОТАЕМ ЧЕРЕЗ НАШЫ МЕТОДЫ
+	  public Book[] books; // С МАССИВОМ РАБОТАЕМ ЧЕРЕЗ НАШЫ МЕТОДЫ
 	  
 	  public Lib (int librarySize){
 		  this.books = new Book[librarySize];
 	  }
 	  
 	  // ДАЛЕЕ ВСТАВЛЯЙТЕ СВОИ МЕТОДЫ И ПРОБУЙТЕ ЗАПУСТИТЬ СВОЙ МЕТОД ЧЕРЕЗ Main СОЗДАВ ЭКЗЕМПЛЯР КЛАССА Lib
-	  // ЗАБЫЛ ДОБАВИТЬ - ДЛЯ ПРОВЕРКИ РАБОТОСПОСОБНОСТИ МЕТОДА НАДО ПОМЕНЯТЬ МОДИФИКАТОР ДОСТУПА НА ПАБЛИК:
-	  // private Book[] books  на public Book[] books;
+	  
 	  
 	  
 	  
