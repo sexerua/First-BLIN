@@ -73,15 +73,15 @@ public class Lib
 				  System.out.println(" СОДЕРЖАНИЕ КНИГИ :");
 				  
 				  if(books[i].getChapters()!=null){
-				  for(String item :books[i].getChapters()){
-						System.out.println((counter++)+"."+item);
+				        for(String item :books[i].getChapters()){
+				            System.out.println((counter++)+"."+item);
 					}
 				  
-			 }else{System.out.println("В КНИГЕ НЕТ СОДЕРЖАНИЯ ГЛАВ");
-				   System.out.println();
-				  }
+			          }else{System.out.println("В КНИГЕ НЕТ СОДЕРЖАНИЯ ГЛАВ");
+				        System.out.println();
+				       }
 				  
-			  }else{break;}
+	                 }else{break;}
 		  }
 	  }
 	  //---------------------------------------------------------------
