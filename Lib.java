@@ -2,7 +2,6 @@ package library;
 
 public class Lib
 {
-	  private boolean fullFormat = false; // ДЛЯ МЕТОДА №9  ФОРМАТ
 	  public Book[] books; // С МАССИВОМ РАБОТАЕМ ЧЕРЕЗ НАШЫ МЕТОДЫ
 	  
 	  public Lib (int librarySize){
@@ -65,8 +64,72 @@ public class Lib
 	  
 	  public void printAllBooks(){
 				 
-		 if (fullFormat==false){printInfo(0);}else{printInfo(1);}
+		 if (foolFormat==false){printInfo(0);}else{printInfo(1);}
 	  }
+	  
+	  
+	  //---------------------------------------------------------------
+	  
+	  //Метод № 5  ПОИСК КНИГИ В БИБЛИОТЕКЕ ПО НАЗВАНИЮ
+	  public void findBook(String findName){
+	  	
+	  	int counter = 0;	// Счётчик найденных книг
+	  	int printFormat;	// Формат вывода  0-краткий/1-полный
+	  	int chapter = 1;	// Индекс главы
+	  	
+	  	System.out.println(" РЕЗУЛЬТАТЫ ПОИСКА:");
+	  	for (Book item: books){
+	  		
+	  	 if (item == null) // Если добрались до пустого элемента, то дальше в библиотеке книг нет
+	  	  	break;
+	  	  
+	  	 if (item.bookName.toLowerCase().contains(findName.trim().toLowerCase())){	
+	  	 	counter++;
+	  	 	
+			System.out.println("--------------- КНИГА № " + counter + ": ---------------");
+			
+			printFormat = (fullFormat)? 1:0;
+			
+			switch(printFormat){
+		  
+		  	case 0:
+				        System.out.println(" НАЗВАНИЕ КНИГИ : "+item.getName()+
+							             " || ГОД КНИГИ : "+item.getYear()+
+							             " || АВТОР КНИГИ : "+item.getAuthor());
+				  	
+			  
+			  		break;
+		 
+		  	default:
+			  		System.out.println(" НАЗВАНИЕ КНИГИ : "+item.getName()+
+							             " || ГОД КНИГИ : "+item.getYear()+
+							             " || АВТОР КНИГИ : "+item.getAuthor());
+					System.out.println(" СОДЕРЖАНИЕ КНИГИ :");
+						  
+						  if(item.getChapters()!=null){
+						  
+						  	for(String chapName :item.getChapters()){
+								System.out.println((chapter++)+"."+chapName);
+							}
+						  
+					 	  } 
+					 	  else{
+					 	  	System.out.println("В КНИГЕ НЕТ СОДЕРЖАНИЯ ГЛАВ");
+						  }
+					
+	
+			
+	  		} //switch-case
+		System.out.println();	  		
+	  	} // if
+	      }	// for
+	  
+	    if (counter = 0)
+	  	System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n")
+	  	
+	  }
+	  
+	  //---------------------------------------------------------------
 	  
 	  // ПОМОЩНИК МЕТОДА ПРОСМОТР, который выводит инфо о книгах в библиотеке  0--краткий формат; 1--полный формат
 	  private void printInfo(int printFormat){
@@ -112,7 +175,7 @@ public class Lib
 	   // МЕТОД №9 ФОРМАТ, можно и на булевский вариант переделать , int bookFormat  можно поменять на boolean bookFormat 
 	   // зависит от кода класса main
 	  public void format(int bookFormat){
-		  fullFormat = (bookFormat==0)? false:true;
+		  foolFormat = (bookFormat==0)? false:true;
 		  
 	  }
 	  
