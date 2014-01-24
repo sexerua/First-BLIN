@@ -108,7 +108,7 @@ public class Lib
 	  }
 	  //---------------------------------------------------------------
 	  
-	   // МЕТОД №9 ФОРМАТ, можно и yf булевский вариант переделать , int bookFormat  можно поменять на boolean bookFormat 
+	   // МЕТОД №9 ФОРМАТ, можно и на булевский вариант переделать , int bookFormat  можно поменять на boolean bookFormat 
 	   // зависит от кода класса main
 	  public void format(int bookFormat){
 		  foolFormat = (bookFormat==0)? false:true;
