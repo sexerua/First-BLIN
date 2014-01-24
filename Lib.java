@@ -74,7 +74,6 @@ public class Lib
 	  public void findBook(String findName){
 	  	
 	  	int counter = 0;	// Счётчик найденных книг
-	  	int printFormat;	// Формат вывода  0-краткий/1-полный
 	  	int chapter = 1;	// Индекс главы
 	  	
 	  	System.out.println(" РЕЗУЛЬТАТЫ ПОИСКА:");
@@ -88,9 +87,7 @@ public class Lib
 	  	 	
 			System.out.println("--------------- КНИГА № " + counter + ": ---------------");
 			
-			printFormat = (fullFormat)? 1:0;
-			
-			switch(printFormat){
+			switch((fullFormat)? 1:0){
 		  
 		  	case 0:
 				        System.out.println(" НАЗВАНИЕ КНИГИ : "+item.getName()+
