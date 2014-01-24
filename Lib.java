@@ -115,13 +115,12 @@ public class Lib
 						  }
 					
 	
-			
 	  		} //switch-case
 		System.out.println();	  		
 	  	} // if
 	      } // for
 	  
-	    if (counter = 0)
+	    if (counter == 0)
 	  	System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n")
 	  	
 	  }
