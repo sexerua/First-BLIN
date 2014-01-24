@@ -98,7 +98,7 @@ public class Lib
 			  		break;
 		 
 		  	default:
-			  		System.out.println(" НАЗВАНИЕ КНИГИ : "+item.getName()+
+					System.out.println(" НАЗВАНИЕ КНИГИ : "+item.getName()+
 							             " || ГОД КНИГИ : "+item.getYear()+
 							             " || АВТОР КНИГИ : "+item.getAuthor());
 					System.out.println(" СОДЕРЖАНИЕ КНИГИ :");
@@ -119,7 +119,7 @@ public class Lib
 	  		} //switch-case
 		System.out.println();	  		
 	  	} // if
-	      }	// for
+	      } // for
 	  
 	    if (counter = 0)
 	  	System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n")
