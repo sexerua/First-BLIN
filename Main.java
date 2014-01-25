@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class Main
 {
+	static String line;                   //СТРОКА КОТОРУЮ МЫ СЧИТЫВАЕМ ВМЕСТЕ С КОМАНДОЙ
+	static int position;                  //ПЕРЕМЕННАЯ ДЛЯ ОТРЕЗКИ КОМАНДЫ ОТ ВСЕЙ СТРОКИ
+	
 	private static String[] commands = {  //СПИСОК КОМАНД
 			"добавить",
 			"просмотр",
@@ -28,7 +31,9 @@ public class Main
 	
 	private static void askCommand() {        //МЕТОД СПРОСИТЬ КОМАНДУ
 		System.out.println("Введите комманду: ");
-		String command = new Scanner(System.in).nextLine().toLowerCase().trim();
+		line = new Scanner(System.in).nextLine().toLowerCase().trim();
+		position = line.indexOf(" ");
+		String command = line.substring(0, position);
 		runCommand(command);
 	}
 	
@@ -51,8 +56,7 @@ public class Main
 			switch (commandToRun)
 			{
 			case "добавить":                          
-				System.out.println("Введите название книги, год, автора и список глав, разделяя все запятыми:");
-				String[] str = new Scanner(System.in).nextLine().trim().split(","); //РАЗБИВАЕМ СТРОКУ НА МАССИВ
+				String[] str = line.substring(position).trim().split(",");          //РАЗБИВАЕМ СТРОКУ НА МАССИВ
 				String[] mas = new String[str.length];                              //МАССИВ РАЗДЕЛЬНЫХ ЭЛЕМЕНТОВ
 				String[] chapters = new String[str.length-3];                       //ДОП МАССИВ ДЛЯ ГЛАВ
 				
