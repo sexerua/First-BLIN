@@ -6,6 +6,8 @@ public class Main
 {
 	static String line;                   //СТРОКА КОТОРУЮ МЫ СЧИТЫВАЕМ ВМЕСТЕ С КОМАНДОЙ
 	static int position;                  //ПЕРЕМЕННАЯ ДЛЯ ОТРЕЗКИ КОМАНДЫ ОТ ВСЕЙ СТРОКИ
+	static String command;
+	Lib lib = new Lib(20);
 	
 	private static String[] commands = {  //СПИСОК КОМАНД
 			"добавить",
@@ -32,14 +34,19 @@ public class Main
 	private static void askCommand() {        //МЕТОД СПРОСИТЬ КОМАНДУ
 		System.out.println("Введите комманду: ");
 		line = new Scanner(System.in).nextLine().trim();
-		position = line.indexOf(" ");
-		String command = line.substring(0, position).toLowerCase();
+		if(line.contains(" "))
+		{
+			position = line.indexOf(" ");
+			String command = line.substring(0, position).toLowerCase();
+		}
+		else
+		{
+			command = line.toLowerCase();
+		}
 		runCommand(command);
 	}
 	
 	private static void runCommand(String command) {   //МЕТОД ЗАПУСТИТЬ КОМАНДУ
-		
-			Lib lib = new Lib(20);
 			
 			String commandToRun = null;
 			
@@ -88,9 +95,15 @@ public class Main
 					lib.addBook(mas[0],Integer.parseInt(mas[1]), mas[2], chapters); //НАЗВАНИЕ, ГОД, АВТОР И ГЛАВЫ
 					break;
 				}
-				//ТУТ НИЖЕ ПРОВЕРКА НА ТО КАК ДОБАВИЛОСЬ, МОЖНО И УДАЛИТЬ
+				break;
+				
+			case "просмотр":
 				lib.format(1);
 				lib.printAllBooks();
+				break;
+				
+			case "найти":
+				lib.findBook(line.substring(position).trim());
 				break;
 			}
 		}
