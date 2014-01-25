@@ -82,7 +82,7 @@ public class Lib
 	  	 if (item == null) // Если добрались до пустого элемента, то дальше в библиотеке книг нет
 	  	  	break;
 	  	  // это выражение НЕ ВЕРНО (bookName -- не существует, есть name  возможно надо getName)
-	  	 if (item.bookName.toLowerCase().contains(findName.trim().toLowerCase())){
+	  	 if (item.getName().toLowerCase().contains(findName.trim().toLowerCase())){
 	  	 // -------НАДО ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ---------------------
 	  	 	counter++;
 	  	 	
