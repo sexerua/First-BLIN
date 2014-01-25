@@ -31,9 +31,9 @@ public class Main
 	
 	private static void askCommand() {        //МЕТОД СПРОСИТЬ КОМАНДУ
 		System.out.println("Введите комманду: ");
-		line = new Scanner(System.in).nextLine().toLowerCase().trim();
+		line = new Scanner(System.in).nextLine().trim();
 		position = line.indexOf(" ");
-		String command = line.substring(0, position);
+		String command = line.substring(0, position).toLowerCase();
 		runCommand(command);
 	}
 	
@@ -58,7 +58,7 @@ public class Main
 			case "добавить":                          
 				String[] str = line.substring(position).trim().split(",");          //РАЗБИВАЕМ СТРОКУ НА МАССИВ
 				String[] mas = new String[str.length];                              //МАССИВ РАЗДЕЛЬНЫХ ЭЛЕМЕНТОВ
-				String[] chapters = new String[str.length-3];                       //ДОП МАССИВ ДЛЯ ГЛАВ
+				String[] chapters = null;                       //ДОП МАССИВ ДЛЯ ГЛАВ
 				
 				for (int i = 0; i < str.length; i++)       //ПЕРЕБИРАЕМ ЭЛЕМЕНТЫ СТРОКИ
 				{
@@ -66,6 +66,7 @@ public class Main
 				}
 				if(mas.length > 3)                         //ЕСЛИ ЭЛЕМЕНТОВ БОЛЬШЕ 3, ТО...
 				{
+					chapters = new String[str.length-3];       //ДОП МАССИВ ДЛЯ ГЛАВ
 					for (int i = 3; i < mas.length; i++)
 					{
 						chapters[i-3] = mas[i];            //...ПОМЕЩАЕМ ГЛАВЫ В ДОП МАССИВ
