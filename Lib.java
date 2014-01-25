@@ -3,7 +3,7 @@ package library;
 public class Lib
 {
 	  public Book[] books; // С МАССИВОМ РАБОТАЕМ ЧЕРЕЗ НАШЫ МЕТОДЫ
-	  
+	  private boolean fullFormat = false; // ДЛЯ МЕТОДА №9  ФОРМАТ
 	  public Lib (int librarySize){
 		  this.books = new Book[librarySize];
 	  }
@@ -64,7 +64,7 @@ public class Lib
 	  
 	  public void printAllBooks(){
 				 
-		 if (foolFormat==false){printInfo(0);}else{printInfo(1);}
+		 if (fullFormat==false){printInfo(0);}else{printInfo(1);}
 	  }
 	  
 	  
@@ -81,8 +81,9 @@ public class Lib
 	  		
 	  	 if (item == null) // Если добрались до пустого элемента, то дальше в библиотеке книг нет
 	  	  	break;
-	  	  
-	  	 if (item.bookName.toLowerCase().contains(findName.trim().toLowerCase())){	
+	  	  // это выражение НЕ ВЕРНО (bookName -- не существует, есть name  возможно надо getName)
+	  	 if (item.bookName.toLowerCase().contains(findName.trim().toLowerCase())){
+	  	 // -------НАДО ПРОВЕРИТЬ РАБОТОСПОСОБНОСТЬ---------------------
 	  	 	counter++;
 	  	 	
 			System.out.println("--------------- КНИГА № " + counter + ": ---------------");
@@ -121,7 +122,7 @@ public class Lib
 	      } // for
 	  
 	    if (counter == 0)
-	  	System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n")
+	  	System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n");
 	  	
 	  }
 	  
@@ -171,7 +172,7 @@ public class Lib
 	   // МЕТОД №9 ФОРМАТ, можно и на булевский вариант переделать , int bookFormat  можно поменять на boolean bookFormat 
 	   // зависит от кода класса main
 	  public void format(int bookFormat){
-		  foolFormat = (bookFormat==0)? false:true;
+		  fullFormat = (bookFormat==0)? false:true;
 		  
 	  }
 	  
