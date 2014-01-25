@@ -26,7 +26,7 @@ public class Book
 		this.year = year;
 		this.chosen = false;
 	}
-	public Book(String name, int year, String author, String...chapters){
+	public Book(String name, int year, String author, String[] chapters){
 		this.name = name;
 		this.chapters = chapters;
 		this.author = author;
