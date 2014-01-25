@@ -177,6 +177,36 @@ public class Lib
 	  }
 	  
 	  //---------------------------------------------------------------
+	  // МЕТОД №6 СОДЕРЖАНИЕ (выполняет поиск по названию книги и выводит её название
+	// + главы)
+	public void bookContent(String bookName) {
+
+		int counter = 0;	// номер книжки
+		int chapter = 1;	// номер главы
+
+		for (Book item : books) {
+			counter++;
+
+			if (item.getName().toLowerCase().equals(bookName.toLowerCase())) {
+				System.out.println("\t      Книга № " + counter
+						+ "\n \t Название книги: " + item.getName());
+
+				if (item.getChapters() != null) {
+					System.out.println("Содержание: ");
+
+					for (String chaps : item.getChapters()) {
+						System.out.println((chapter++) + "." + " Глава: "
+								+ chaps);
+					}
+					break;
+
+				} else {
+					System.out.println("В этой книге нету глав");
+					break;
+				}
+			} // if: equals
+		} // for: Book
+	}
 	  
 }
 
