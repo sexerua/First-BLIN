@@ -49,7 +49,7 @@ public class Lib
 	  }
 	  
 	  //ПЕРЕГРУЗКА БАЗОВОГО МЕТОДА ДОБАВИТЬ КНИГУ В БИБЛИОТЕКУ
-	  public void addBook (String bookName, int bookYear, String bookAuthor, String...bookChapters){
+	  public void addBook (String bookName, int bookYear, String bookAuthor, String[] bookChapters){
 		  for(int i=0; i<books.length; i++){
 			  if(books[i]==null){
 				  books[i] = new Book(bookName,bookYear,bookAuthor,bookChapters);
