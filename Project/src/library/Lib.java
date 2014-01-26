@@ -67,6 +67,62 @@ public class Lib
 		 if (fullFormat==false){printInfo(0);}else{printInfo(1);}
 	  }
 	  
+	  //Метод № 3 ПРОСМОТР по заданному автору
+          
+          public void findByAuthor(String findAuthor){
+        	  
+        	  int counter = 0; 
+        	  int chapter = 1;
+        	  
+        	  System.out.println(" РЕЗУЛЬТАТЫ ПОИСКА:");
+              for (Book item: books){
+                      
+               if (item == null) 		// Если добрались до пустого элемента, то дальше в библиотеке книг нет
+                        break;
+               if (item.getAuthor().toLowerCase().contains(findAuthor.trim().toLowerCase())){
+                   
+                   counter++;
+                   
+                System.out.println("--------------- КНИГА № " + counter + ": ---------------");
+                
+                switch((fullFormat)? 1:0){
+          
+                  case 0:
+                                System.out.println(" || АВТОР КНИГИ : "+item.getAuthor()+"\n" +
+                                		" || НАЗВАНИЕ КНИГИ : "+item.getName()+"\n" +
+                                		" || ГОД КНИГИ : "+item.getYear()+"\n"                                		
+                                         );
+                                  
+                  
+                                  break;
+         
+                  default:
+                                System.out.println(" НАЗВАНИЕ КНИГИ : "+item.getName()+
+                                                             " || ГОД КНИГИ : "+item.getYear()+
+                                                             " || АВТОР КНИГИ : "+item.getAuthor());
+                                System.out.println(" СОДЕРЖАНИЕ КНИГИ :");
+                                          
+                                          if(item.getChapters()!=null){
+                                          
+                                                  for(String chapName :item.getChapters()){
+                                                        System.out.println((chapter++)+"."+chapName);
+                                                }
+                                          
+                                           } 
+                                           else{
+                                                   System.out.println("В КНИГЕ НЕТ СОДЕРЖАНИЯ ГЛАВ");
+                                          }
+                                
+
+                  } //switch-case
+        System.out.println();                          
+          } // if
+      } // for
+  
+    if (counter == 0)
+          System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n");
+          
+  }
 	  
 	  //---------------------------------------------------------------
 	  
