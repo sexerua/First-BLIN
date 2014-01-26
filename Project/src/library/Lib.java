@@ -212,13 +212,13 @@ public class Lib
 	  //Метод №8 ИЗБРАННОЕ
 	  
 	  public void allFavorites() {
+		  System.out.println("Избранные книжечки:");
 		  for (Book element : books)
 		{
 			if (element == null) 
 				break;
 			
 			if(element.isChosen()) {
-				System.out.println("Избранные книжечки:");
 				System.out.println(element.getName());
 			}
 		}
