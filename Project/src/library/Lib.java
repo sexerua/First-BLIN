@@ -1,5 +1,7 @@
 package library;
 
+import java.util.Iterator;
+
 public class Lib
 {
 	  public Book[] books; // С МАССИВОМ РАБОТАЕМ ЧЕРЕЗ НАШЫ МЕТОДЫ
@@ -202,6 +204,27 @@ public class Lib
 	      }  
 	  }
 	  
+	//---------------------------------------------------------------
+	  
+	  //Метод №8 ИЗБРАННОЕ
+	  
+	  public void allFavorites() {
+		  for (Book element : books)
+		{
+			if (element == null) 
+				break;
+			
+			if(element.isChosen()) {
+				
+			
+				System.out.println("Избранные книжечки:");
+				System.out.println(element.getName());
+			}
+		}
+	  }
+	  
+	
+	  
 	 
 	  
 	  //---------------------------------------------------------------
@@ -245,6 +268,9 @@ public class Lib
 			  break;
 		  }
 	  }
+	  
+
+	  
 	  //---------------------------------------------------------------
 	  
 	   // МЕТОД №9 ФОРМАТ, можно и на булевский вариант переделать , int bookFormat  можно поменять на boolean bookFormat 
