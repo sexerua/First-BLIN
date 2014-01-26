@@ -3,14 +3,14 @@ package library;
 public class Book
 {
 
-	private String name;                 //Название книги
-	private String author;              //Автор книги
-	private String [] chapters;        //Список глав книги
-	private int year;                 //Год издательства книги
-	private boolean chosen = false;  //Является ли избранным
+	private String name;                 //Р СњР В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ Р С”Р Р…Р С‘Р С–Р С‘
+	private String author;              //Р С’Р Р†РЎвЂљР С•РЎР‚ Р С”Р Р…Р С‘Р С–Р С‘
+	private String [] chapters;        //Р РЋР С—Р С‘РЎРѓР С•Р С” Р С–Р В»Р В°Р Р† Р С”Р Р…Р С‘Р С–Р С‘
+	private int year;                 //Р вЂњР С•Р Т‘ Р С‘Р В·Р Т‘Р В°РЎвЂљР ВµР В»РЎРЉРЎРѓРЎвЂљР Р†Р В° Р С”Р Р…Р С‘Р С–Р С‘
+	private boolean chosen = false;  //Р Р‡Р Р†Р В»РЎРЏР ВµРЎвЂљРЎРѓРЎРЏ Р В»Р С‘ Р С‘Р В·Р В±РЎР‚Р В°Р Р…Р Р…РЎвЂ№Р С
 	
 	
-	// КОНСТРУКТОРЫ НА ВЫБОР
+	// Р С™Р С›Р СњР РЋР СћР В Р Р€Р С™Р СћР С›Р В Р В« Р СњР С’ Р вЂ™Р В«Р вЂР С›Р В 
 	public Book(String name){
 		this.name = name;
 		this.chosen = false;
@@ -26,7 +26,7 @@ public class Book
 		this.year = year;
 		this.chosen = false;
 	}
-	public Book(String name, int year, String author, String...chapters){
+	public Book(String name, int year, String author, String[] chapters){
 		this.name = name;
 		this.chapters = chapters;
 		this.author = author;
@@ -34,44 +34,44 @@ public class Book
 		this.chosen = false;
 	}
 	
-	//МЕТОДЫ : СЕТТЕРЫ И ГЕТТЕРЫ
-	public String getName()             // получить название книги
+	//Р СљР вЂўР СћР С›Р вЂќР В« : Р РЋР вЂўР СћР СћР вЂўР В Р В« Р пїЅ Р вЂњР вЂўР СћР СћР вЂўР В Р В«
+	public String getName()             // Р С—Р С•Р В»РЎС“РЎвЂЎР С‘РЎвЂљРЎРЉ Р Р…Р В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ Р С”Р Р…Р С‘Р С–Р С‘
 	{
 		return name;
 	}
-	public void setName(String name)   // записать название книги
+	public void setName(String name)   // Р В·Р В°Р С—Р С‘РЎРѓР В°РЎвЂљРЎРЉ Р Р…Р В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ Р С”Р Р…Р С‘Р С–Р С‘
 	{
 		this.name = name;
 	}
-	public String getAuthor()         // получить название
+	public String getAuthor()         // Р С—Р С•Р В»РЎС“РЎвЂЎР С‘РЎвЂљРЎРЉ Р Р…Р В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ
 	{
 		return author;
 	}
-	public void setAuthor(String author)   // записать название
+	public void setAuthor(String author)   // Р В·Р В°Р С—Р С‘РЎРѓР В°РЎвЂљРЎРЉ Р Р…Р В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ
 	{
 		this.author = author;
 	}
-	public String[] getChapters()    // получить название
+	public String[] getChapters()    // Р С—Р С•Р В»РЎС“РЎвЂЎР С‘РЎвЂљРЎРЉ Р Р…Р В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ
 	{
 		return chapters;
 	}
-	public void setChapters(String[] chapters)    // записать название
+	public void setChapters(String[] chapters)    // Р В·Р В°Р С—Р С‘РЎРѓР В°РЎвЂљРЎРЉ Р Р…Р В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ
 	{
 		this.chapters = chapters;
 	}
-	public int getYear()            // получить название
+	public int getYear()            // Р С—Р С•Р В»РЎС“РЎвЂЎР С‘РЎвЂљРЎРЉ Р Р…Р В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ
 	{
 		return year;
 	}
-	public void setYear(int year)    // записать название
+	public void setYear(int year)    // Р В·Р В°Р С—Р С‘РЎРѓР В°РЎвЂљРЎРЉ Р Р…Р В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ
 	{
 		this.year = year;
 	}
-	public boolean isChosen()      // получить название
+	public boolean isChosen()      // Р С—Р С•Р В»РЎС“РЎвЂЎР С‘РЎвЂљРЎРЉ Р Р…Р В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ
 	{
 		return chosen;
 	}
-	public void setChosen(boolean chosen)   // записать название
+	public void setChosen(boolean chosen)   // Р В·Р В°Р С—Р С‘РЎРѓР В°РЎвЂљРЎРЉ Р Р…Р В°Р В·Р Р†Р В°Р Р…Р С‘Р Вµ
 	{
 		this.chosen = chosen;
 	}
