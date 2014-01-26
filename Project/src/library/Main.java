@@ -98,12 +98,19 @@ public class Main
 				break;
 				
 			case "просмотр":
-				lib.format(1);
 				lib.printAllBooks();
 				break;
 				
 			case "найти":
 				lib.findBook(line.substring(position).trim());
+				break;
+				
+			case "формат":
+				lib.format(Integer.parseInt(line.substring(position).trim()));
+				break;
+				
+			case "закладка":
+				lib.makeFavorite(line.substring(position).trim());
 				break;
 			}
 		}

@@ -185,19 +185,24 @@ public class Lib
 	  //---------------------------------------------------------------
 	  
 	  //Метод №7 ЗАКЛАДКА ---------------------------------------------
-	  /*
+	  
 	  public void makeFavorite(String bookName) {
 	      for (Book element : books)
 	      {
+	    	if(element == null)
+	    		break;
+	    	
 			if (bookName.equals(element.getName()))
 			{
 				element.setChosen(true);
-				System.out.println("Книга " + bookName + " успешно добавлена в закладки");
+				System.out.println("Книга '" + bookName + "' успешно добавлена в закладки");
 			}
+			else
+				System.out.println("Данная книга не найдена в библиотеке");
 	      }  
 	  }
 	  
-	 */
+	 
 	  
 	  //---------------------------------------------------------------
 	  
