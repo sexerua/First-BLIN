@@ -37,7 +37,7 @@ public class Main
 		if(line.contains(" "))
 		{
 			position = line.indexOf(" ");
-			String command = line.substring(0, position).toLowerCase();
+			command = line.substring(0, position).toLowerCase();
 		}
 		else
 		{
