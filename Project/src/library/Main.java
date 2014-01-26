@@ -112,6 +112,10 @@ public class Main
 			case "закладка":
 				lib.makeFavorite(line.substring(position).trim());
 				break;
+				
+			case "избранное":
+				lib.allFavorites();
+				break;
 			}
 		}
 }
