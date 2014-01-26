@@ -1,7 +1,5 @@
 package library;
 
-//test 15:14
-
 public class Book
 {
 
