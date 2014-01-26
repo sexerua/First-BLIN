@@ -189,6 +189,8 @@ public class Lib
 	  //Метод №7 ЗАКЛАДКА ---------------------------------------------
 	  
 	  public void makeFavorite(String bookName) {
+		  int counter = 0;
+		  
 	      for (Book element : books)
 	      {
 	    	if(element == null)
@@ -196,12 +198,13 @@ public class Lib
 	    	
 			if (bookName.equals(element.getName()))
 			{
+				counter++;
 				element.setChosen(true);
 				System.out.println("Книга '" + bookName + "' успешно добавлена в закладки");
 			}
-			else
-				System.out.println("Данная книга не найдена в библиотеке");
-	      }  
+	      }
+	      if (counter == 0)
+	  	  	System.out.println("Данная книга не найде в библиотеке");
 	  }
 	  
 	//---------------------------------------------------------------
@@ -215,8 +218,6 @@ public class Lib
 				break;
 			
 			if(element.isChosen()) {
-				
-			
 				System.out.println("Избранные книжечки:");
 				System.out.println(element.getName());
 			}
