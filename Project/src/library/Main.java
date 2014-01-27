@@ -106,6 +106,10 @@ public class Main
 				lib.findBook(line.substring(position).trim());
 				break;
 				
+			case "содержание":
+                        	lib.bookContent(line.substring(position).trim());
+                        	break;
+				
 			case "формат":
 				lib.format(Integer.parseInt(line.substring(position).trim()));
 				break;
