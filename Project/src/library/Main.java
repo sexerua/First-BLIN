@@ -62,8 +62,8 @@ public class Main
 			
 			switch (commandToRun)
 			{
-			case "добавить":                          
-				String[] str = line.substring(position).trim().split(",");          //РАЗБИВАЕМ СТРОКУ НА МАССИВ
+			case "добавить":             // У меня большие сомнения в роботоспособности этого кода (Валерий)             
+				String[] str = line.substring(position).trim().split(",");          //РАЗБИВАЕМ СТРОКУ НА МАССИВ - как работает эта шарабарщина? (Валерий)
 				String[] mas = new String[str.length];                              //МАССИВ РАЗДЕЛЬНЫХ ЭЛЕМЕНТОВ
 				String[] chapters = null;                       //ДОП МАССИВ ДЛЯ ГЛАВ
 				
