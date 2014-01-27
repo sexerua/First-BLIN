@@ -117,6 +117,9 @@ public class Main
 			case "избранное":
 				lib.allFavorites();
 				break;
+			case "количество":
+                            	lib.myNumber();
+                            	break;
 			}
 		}
 }
