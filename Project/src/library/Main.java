@@ -118,8 +118,11 @@ public class Main
 				lib.allFavorites();
 				break;
 			case "количество":
-                            	lib.myNumber();
+                                lib.myNumber();
                         	break;
+                        case "Выход":
+				System.exit(0);
+				break;
 			}
 		}
 }
