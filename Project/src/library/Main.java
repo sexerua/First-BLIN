@@ -7,11 +7,13 @@ public class Main
 	static String line;                   //СТРОКА КОТОРУЮ МЫ СЧИТЫВАЕМ ВМЕСТЕ С КОМАНДОЙ
 	static int position;                  //ПЕРЕМЕННАЯ ДЛЯ ОТРЕЗКИ КОМАНДЫ ОТ ВСЕЙ СТРОКИ
 	static String command;
+	static String arguments;
 	static Lib lib = new Lib(20);
 	
 	private static String[] commands = {  //СПИСОК КОМАНД
 			"добавить",
 			"просмотр",
+			"просмотр-по-автору",
 			"найти",
 			"содержание",
 			"закладка",
@@ -38,10 +40,13 @@ public class Main
 		{
 			position = line.indexOf(" ");
 			command = line.substring(0, position).toLowerCase();
+			arguments = line.substring(position).trim();
+			
 		}
 		else
 		{
 			command = line.toLowerCase();
+			arguments = "";
 		}
 		runCommand(command);
 	}
@@ -62,9 +67,8 @@ public class Main
 			
 			switch (commandToRun)
 			{
-			case "добавить":             // У меня большие сомнения в роботоспособности этого кода (Валерий)             
-				String[] str = line.substring(position).trim().split(",");          //РАЗБИВАЕМ СТРОКУ НА МАССИВ - как работает эта шарабарщина? (Валерий)
-												    //Мне тебе прямо тут обьяснять, или ты хотя бы в  скайп зайдешь? (Влад)
+			case "добавить":           
+				String[] str = arguments.split(",");          //РАЗБИВАЕМ СТРОКУ НА МАССИВ
 				String[] mas = new String[str.length];                              //МАССИВ РАЗДЕЛЬНЫХ ЭЛЕМЕНТОВ
 				String[] chapters = null;                       //ДОП МАССИВ ДЛЯ ГЛАВ
 				
@@ -87,44 +91,61 @@ public class Main
 					lib.addBook(mas[0]);                   //ТОЛЬКО НАЗВАНИЕ
 					break;
 				case 2:
-					lib.addBook(mas[0], Integer.parseInt(mas[1])); //ТОЛЬКО НАЗВАНИЕ И ГОД
+					if(lib.proverka(mas[1]))
+						lib.addBook(mas[0],Integer.parseInt(mas[1])); //ТОЛЬКО НАЗВАНИЕ И ГОД
+					else
+						System.out.println("Ошибка ввода года, год должен вводиться только числом и без букв.");
 					break;
 				case 3:
-					lib.addBook(mas[0],Integer.parseInt(mas[1]), mas[2]); //ТОЛЬКО НАЗВАНИЕ, ГОД И АВТОР
+					if(lib.proverka(mas[1]))
+						lib.addBook(mas[0],Integer.parseInt(mas[1]), mas[2]); //ТОЛЬКО НАЗВАНИЕ, ГОД И АВТОР
+					else
+						System.out.println("Ошибка ввода года, год должен вводиться только числом и без букв.");
 					break;
 				default:
-					lib.addBook(mas[0],Integer.parseInt(mas[1]), mas[2], chapters); //НАЗВАНИЕ, ГОД, АВТОР И ГЛАВЫ
+					if(lib.proverka(mas[1]))
+						lib.addBook(mas[0],Integer.parseInt(mas[1]), mas[2], chapters); //НАЗВАНИЕ, ГОД, АВТОР И ГЛАВЫ
+					else
+						System.out.println("Ошибка ввода года, год должен вводиться только числом и без букв.");
 					break;
 				}
 				break;
 				
 			case "просмотр":
-				lib.printAllBooks();
+				if(arguments.isEmpty())
+					lib.printAllBooks();
+				else
+					lib.findByAuthor(arguments);
 				break;
 				
 			case "найти":
-				lib.findBook(line.substring(position).trim());
+				lib.findBook(arguments);
 				break;
 				
 			case "содержание":
-                        	lib.bookContent(line.substring(position).trim());
-                        	break;
+				lib.bookContent(arguments);
+				break;
 				
 			case "формат":
-				lib.format(Integer.parseInt(line.substring(position).trim()));
+				if(arguments.equals("краткий"))
+					lib.format(0);
+				else if(arguments.equals("полный"))
+					lib.format(1);
 				break;
 				
 			case "закладка":
-				lib.makeFavorite(line.substring(position).trim());
+				lib.makeFavorite(arguments);
 				break;
 				
 			case "избранное":
 				lib.allFavorites();
 				break;
+				
 			case "количество":
-                                lib.myNumber();
-                        	break;
-                        case "Выход":
+				lib.myNumber();
+				break;
+				
+			case "выход":
 				System.exit(0);
 				break;
 			}

@@ -256,7 +256,7 @@ public class Lib
 	  	  	System.out.println("Данная книга не найде в библиотеке");
 	  }
 	  
-	//---------------------------------------------------------------
+	  //---------------------------------------------------------------
 	  
 	  //Метод №8 ИЗБРАННОЕ
 	  
@@ -370,6 +370,17 @@ public class Lib
         	}
         	catch (Exception e){
         		System.out.println("olo lo");
+        	}
+        }
+        
+        //ПОМОЩНИК МЕТОДА ДОБАВИТЬ, ПРОВЕРЯЕТ ЧТО ВВЕЛ ПОЛЬЗОВАТЕЛЬ ЧИСЛО ИЛИ ТЕКСТ 
+        public boolean proverka(String str){
+        	try {
+        		int i = Integer.parseInt(str.trim());
+        		return true;
+        	} 
+        	catch (NumberFormatException e) {
+        		return false;
         	}
         }
 }
