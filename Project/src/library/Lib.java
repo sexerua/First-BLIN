@@ -221,50 +221,53 @@ public class Lib
 	  
 	  //---------------------------------------------------------------
 	  
-	  // МЕТОД №6 СОДЕРЖАНИЕ (выполняет поиск по названию книги и выводит её название + главы)
-	public void bookContent(String bookName) {
+	   // МЕТОД №6 СОДЕРЖАНИЕ (выполняет поиск по названию книги и выводит её название + главы)
+        public void bookContent(String bookName) {
 
-		int counter = 1; // номер книжки
-		int chapter = 1; // номер главы
+                int counter = 1; // номер книжки
+                int chapter = 1; // номер главы
 
-		for (Book item : books) {
+                for (Book item : books) {
 
-			if (item == null)
-				break;
+                        if (item == null)
+                                break;
 
-			if (item.getName().toLowerCase().equals(bookName.trim().toLowerCase())) {
-				System.out.println("\t    Книга № " + counter++);
-			}
+                        if (item.getName().toLowerCase().equals(bookName.trim().toLowerCase())) {
+                                System.out.println("\t    Книга № " + counter++);
+                        }else{
+                        	System.out.println("Книга не найдена");
+                        	return;
+                }
 
-			switch ((fullFormat) ? 1 : 0) {
+                        switch ((fullFormat) ? 1 : 0) {
 
-			case 0:
+                        case 0:
+                        		if(bookName != null){
+                                System.out.println("\t Название книги: " + item.getName());
+                                break;
+                        		}
+                        		
+                        case 1:
+                                if(bookName != null)
+                                System.out.println("\t Название книги: " + item.getName());
 
-				System.out.println("\t Название книги: " + item.getName());
-				break;
-				
-			case 1:
-				
-				System.out.println("\t Название книги: " + item.getName());
+                                if (item.getChapters() != null) {
+                                        System.out.println("Содержание: ");
 
-				if (item.getChapters() != null) {
-					System.out.println("Содержание: ");
+                                        for (String chaps : item.getChapters()) {
+                                                System.out.println((chapter++) + "." + " Глава: " + chaps);        
+                                        }
+                                        break;
 
-					for (String chaps : item.getChapters()) {
-						System.out.println((chapter++) + "." + " Глава: " + chaps);	
-					}
-					break;
+                                } else {
+                                        System.out.println("В этой книге нету глав");
+                                        break;
+                                }
+                        }
+                        break;
+                }
 
-				} else {
-					System.out.println("В этой книге нету глав");
-					break;
-				}
-			}
-			break;
-
-		}
-
-	}
+        }
 	  //---------------------------------------------------------------
 	  
 	  //Метод №7 ЗАКЛАДКА ---------------------------------------------
