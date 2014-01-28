@@ -1,6 +1,12 @@
 package library;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.Iterator;
+import java.io.PrintWriter;
 
 public class Lib
 {
@@ -400,15 +406,50 @@ public class Lib
         }
         
                 //ПОМОЩНИК МЕТОДА ДОБАВИТЬ, ПРОВЕРЯЕТ ЧТО ВВЕЛ ПОЛЬЗОВАТЕЛЬ ЧИСЛО ИЛИ ТЕКСТ 
-                public boolean proverka(String str){
-                	try {
-                		int i = Integer.parseInt(str.trim());
-                		return true;
-                	} 
-                	catch (NumberFormatException e) {
-                		return false;
-                	}
-                }
-
+        public boolean proverka(String str){
+        	try {
+        		int i = Integer.parseInt(str.trim());
+                return true;
+            } 
+            catch (NumberFormatException e) {
+            	return false;
+            }
+        }
+        //---------------------------------------------------------------------------------
+        
+        public void export() {
+            try 
+            {
+                File bookPath = new File("D:/Library.txt"); // объект путь файлa
+                FileWriter str = new FileWriter(bookPath);  //  вывод информации
+                PrintWriter w = new PrintWriter(str); // запись
+                       int counter=1;// СЧЕТЧИК ДЛЯ ГЛАВ (ДЕЛАЕТ НОМЕРАЦИЮ ГЛАВ
+                               for(int i=0; i<books.length; i++){
+                            	   if(books[i]!=null){
+                            		   w.println(" НАЗВАНИЕ КНИГИ : "+books[i].getName()+
+                            				   " || ГОД КНИГИ : "+books[i].getYear()+
+                                               " || АВТОР КНИГИ : "+books[i].getAuthor());
+                            		   w.println(" СОДЕРЖАНИЕ КНИГИ :");
+                                           
+                            		   if(books[i].getChapters()!=null){
+                            			   for(String item :books[i].getChapters()){
+                            				   w.println((counter++)+"."+item);
+                            			   }
+                                                       
+                            		   }
+                            		   else {
+                                        	w.println("В КНИГЕ НЕТ СОДЕРЖАНИЯ ГЛАВ");
+                                       }
+                            		   w.println();
+                            	   }
+                               }
+                
+                w.close(); // завершить запись и закрыть трай - обязательно!
+            } 
+            catch (IOException e) //исключить ошибки
+            {
+                System.err.println("проблема с записью файла Library.txt"); 
+            }
+        }
 }
 

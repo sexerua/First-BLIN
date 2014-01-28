@@ -146,9 +146,9 @@ public class Main
 				lib.myNumber();
 				break;
 				
-			//case "экспорт":
-			//	lib.export();
-			//	break;
+			case "экспорт":
+				lib.export();
+				break;
 				
 			case "выход":
 				System.exit(0);
