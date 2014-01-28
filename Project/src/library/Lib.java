@@ -135,7 +135,7 @@ public class Lib
 	  	int chapter = 1;	// Индекс главы
 	  	
 	  	System.out.println(" РЕЗУЛЬТАТЫ ПОИСКА:");
-	  	for (Book item: books){
+	  	for (Book item: books){ // Цикл по всем книгам в библиотеке
 	  		
 	  	 if (item == null) // Если добрались до пустого элемента, то дальше в библиотеке книг нет
 	  	  	break;
@@ -143,13 +143,14 @@ public class Lib
 	  	 // УСЛОВИЕ НАХОЖДЕНИЯ ПОДСТРОКИ В СТРОКЕ ПРОВЕРЕНО.  
 	  	 if (item.getName().toLowerCase().contains(findName.trim().toLowerCase())){
 	  	 
-	  	 	counter++;
+	  	 	counter++;  // Увеличиваем счётчик найденных книг
 	  	 	
 			System.out.println("--------------- КНИГА № " + counter + ": ---------------");
 			
-			switch((fullFormat)? 1:0){
-		  
-		  	case 0:
+			// Проверка установленного формата
+			switch((fullFormat)? 1:0){  
+					  
+		  	case 0:		// Вывод в консоль информации в кратком формате
 				        System.out.println(" НАЗВАНИЕ КНИГИ : "+item.getName()+
 							             " || ГОД КНИГИ : "+item.getYear()+
 							             " || АВТОР КНИГИ : "+item.getAuthor());
@@ -157,20 +158,20 @@ public class Lib
 			  
 			  		break;
 		 
-		  	default:
+		  	default:	// Вывод в консоль информации в полном формате
 					System.out.println(" НАЗВАНИЕ КНИГИ : "+item.getName()+
 							             " || ГОД КНИГИ : "+item.getYear()+
 							             " || АВТОР КНИГИ : "+item.getAuthor());
 					System.out.println(" СОДЕРЖАНИЕ КНИГИ :");
-						  
+						  // Если содержание книги не пустое
 						  if(item.getChapters()!=null){
-						  
+						  	// Выводим содержание глав книги
 						  	for(String chapName :item.getChapters()){
 								System.out.println((chapter++)+"."+chapName);
 							}
 						  
 					 	  } 
-					 	  else{
+					 	  else{ // Сообщаем об отсутствии содержания.
 					 	  	System.out.println("В КНИГЕ НЕТ СОДЕРЖАНИЯ ГЛАВ");
 						  }
 					
@@ -180,6 +181,7 @@ public class Lib
 	  	} // if
 	      } // for
 	  
+	    // Если счётчик книг равен нулю - то ничего не найдено.	  
 	    if (counter == 0)
 	  	System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n");
 	  	
