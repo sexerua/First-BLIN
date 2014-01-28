@@ -1,6 +1,6 @@
 package library;
 
-//fdg
+//proverka!
 
 import java.util.Scanner;
 
