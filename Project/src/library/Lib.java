@@ -125,7 +125,34 @@ public class Lib
           System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n");
           
   }
+
+	  //---------------------------------------------------------------
 	  
+	  //Метод № 4  ВОСХОДЯЩАЯ СОРТИРОВКА КНИГ В БИБЛИОТЕКЕ ПО ГОДУ ИЗДАНИЯ
+	  public void sortByYear(){
+
+		// Цикл по книгам всем библиотеки
+	   	 for(int i=0; i<books.length-1;i++){
+        		
+        		// Проверка на конец книг в библиотеке         		 
+        		if (books[i+1] == null)
+        			return;       		
+        		// Сравнение         		 
+        		if (books[i].getYear() > books[i+1].getYear()){
+            		Book book = new Book("");      // Сохраняем в промежуточный объект      	         			
+            		 	// Меняем элементы массивов
+        			book = books[i];    
+	      			books[i] = books[i+1];
+        			books[i+1] = book;
+        			// Идём на рекурсию 
+        			sortByYear();
+        		}
+        	 }        	 
+ 	
+		 
+		}
+
+	  }
 	  //---------------------------------------------------------------
 	  
 	  //Метод № 5  ПОИСК КНИГИ В БИБЛИОТЕКЕ ПО НАЗВАНИЮ
@@ -256,7 +283,7 @@ public class Lib
 	  	  	System.out.println("Данная книга не найде в библиотеке");
 	  }
 	  
-	  //---------------------------------------------------------------
+	//---------------------------------------------------------------
 	  
 	  //Метод №8 ИЗБРАННОЕ
 	  
@@ -370,17 +397,6 @@ public class Lib
         	}
         	catch (Exception e){
         		System.out.println("olo lo");
-        	}
-        }
-        
-        //ПОМОЩНИК МЕТОДА ДОБАВИТЬ, ПРОВЕРЯЕТ ЧТО ВВЕЛ ПОЛЬЗОВАТЕЛЬ ЧИСЛО ИЛИ ТЕКСТ 
-        public boolean proverka(String str){
-        	try {
-        		int i = Integer.parseInt(str.trim());
-        		return true;
-        	} 
-        	catch (NumberFormatException e) {
-        		return false;
         	}
         }
 }
