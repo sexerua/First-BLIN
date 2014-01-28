@@ -67,7 +67,7 @@ public class Main
 			switch (commandToRun)
 			{
 			case "добавить":           
-				String[] str = arguments.split(",");          //РАЗБИВАЕМ СТРОКУ НА МАССИВ
+				String[] str = arguments.split(";");          //РАЗБИВАЕМ СТРОКУ НА МАССИВ
 				String[] mas = new String[str.length];                              //МАССИВ РАЗДЕЛЬНЫХ ЭЛЕМЕНТОВ
 				String[] chapters = null;                       //ДОП МАССИВ ДЛЯ ГЛАВ
 				
@@ -144,9 +144,9 @@ public class Main
 				lib.myNumber();
 				break;
 				
-			case "экспорт":
-				lib.export();
-				break;
+			//case "экспорт":
+			//	lib.export();
+			//	break;
 				
 			case "выход":
 				System.exit(0);

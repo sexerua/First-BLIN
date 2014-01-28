@@ -152,7 +152,6 @@ public class Lib
 		 
 		}
 
-	  }
 	  //---------------------------------------------------------------
 	  
 	  //Метод № 5  ПОИСК КНИГИ В БИБЛИОТЕКЕ ПО НАЗВАНИЮ
@@ -399,5 +398,17 @@ public class Lib
         		System.out.println("olo lo");
         	}
         }
+        
+                //ПОМОЩНИК МЕТОДА ДОБАВИТЬ, ПРОВЕРЯЕТ ЧТО ВВЕЛ ПОЛЬЗОВАТЕЛЬ ЧИСЛО ИЛИ ТЕКСТ 
+                public boolean proverka(String str){
+                	try {
+                		int i = Integer.parseInt(str.trim());
+                		return true;
+                	} 
+                	catch (NumberFormatException e) {
+                		return false;
+                	}
+                }
+
 }
 
