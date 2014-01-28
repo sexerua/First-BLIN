@@ -142,7 +142,7 @@ public class Lib
             		Book book = new Book("");      // Сохраняем в промежуточный объект      	         			
             		 	// Меняем элементы массивов
         			book = books[i];    
-	      			books[i] = books[i+1];
+				books[i] = books[i+1];
         			books[i+1] = book;
         			// Идём на рекурсию 
         			sortByYear();
