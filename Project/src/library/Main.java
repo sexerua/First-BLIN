@@ -116,7 +116,15 @@ public class Main
 				if(arguments.isEmpty())
 					lib.printAllBooks();
 				else
-					lib.findByAuthor(arguments);
+				try{	
+					int year = Integer.parseInt(arguments);
+					lib.findByYear(year);
+				}	
+								
+				catch(NumberFormatException e){
+					lib.findByAuthor(arguments);					
+				}	
+				
 				break;
 				
 			case "найти":

@@ -87,6 +87,10 @@ public class Lib
                       
                if (item == null) 		// Если добрались до пустого элемента, то дальше в библиотеке книг нет
                         break;
+               
+               if (item.getAuthor() == null)
+            	   continue;
+               
                if (item.getAuthor().toLowerCase().contains(findAuthor.trim().toLowerCase())){
                    
                    counter++;
