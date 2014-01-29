@@ -75,15 +75,57 @@ public class Lib
 		 if (fullFormat==false){printInfo(0);}else{printInfo(1);}
 	  }
 	  
-	  //Метод № 3 ПРОСМОТР по заданному автору
-          
-          public void findByAuthor(String findAuthor){
+	//---------------------------------------------------------------	   
+	  
+	// Метод печати книг по заданному формату
+	  
+	private void printBook(int index, Book book){
+	  		 
+		 int chapter = 1; // Индекс главы
+	  		 
+         System.out.println("--------------- КНИГА № " + index + ": ---------------");
+             
+         switch((fullFormat)? 1:0){
+       
+           case 0:
+                   System.out.println(" || АВТОР КНИГИ : "+book.getAuthor()+"\n" +
+                		   			" || НАЗВАНИЕ КНИГИ : "+book.getName()+"\n" +
+                             		" || ГОД КНИГИ : "+book.getYear()+"\n");
+                               
+               
+                   break;
+      
+          default:
+                   System.out.println( " || АВТОР КНИГИ : "+book.getAuthor()+
+                   		 			 " || НАЗВАНИЕ КНИГИ : "+book.getName()+
+                   		 			 " || ГОД КНИГИ : "+book.getYear());
+                   System.out.println(" СОДЕРЖАНИЕ КНИГИ :");
+                                       
+                   if(book.getChapters()!=null){
+                                       
+                           for(String chapName :book.getChapters()){
+                                     System.out.println((chapter++)+"."+chapName);
+                           }
+                                       
+                   } 
+                   else{
+                           System.out.println("В КНИГЕ НЕТ СОДЕРЖАНИЯ ГЛАВ");
+                       }
+                             
+
+         } //switch-case
+        System.out.println();                          	 	 
+	}	
+	
+	//---------------------------------------------------------------	   
+	   
+	//Метод № 3 ПРОСМОТР по заданному автору         
+    public void findByAuthor(String author){
         	  
-        	  int counter = 0; 
-        	  int chapter = 1;
+       	  int counter = 0; 
         	  
-        	  System.out.println(" РЕЗУЛЬТАТЫ ПОИСКА:");
-              for (Book item: books){
+       	  System.out.println(" РЕЗУЛЬТАТЫ ПОИСКА:");
+          for (Book item: books){
                       
                if (item == null) 		// Если добрались до пустого элемента, то дальше в библиотеке книг нет
                         break;
@@ -91,169 +133,74 @@ public class Lib
                if (item.getAuthor() == null)
             	   continue;
                
-               if (item.getAuthor().toLowerCase().contains(findAuthor.trim().toLowerCase())){
+               if (item.getAuthor().toLowerCase().contains(author.trim().toLowerCase())){
                    
                    counter++;
-                   
-                System.out.println("--------------- КНИГА № " + counter + ": ---------------");
-                
-                switch((fullFormat)? 1:0){
-          
-                  case 0:
-                                System.out.println(" || АВТОР КНИГИ : "+item.getAuthor()+"\n" +
-                                		" || НАЗВАНИЕ КНИГИ : "+item.getName()+"\n" +
-                                		" || ГОД КНИГИ : "+item.getYear()+"\n"                                		
-                                         );
-                                  
-                  
-                                  break;
-         
-                  default:
-                                System.out.println(" НАЗВАНИЕ КНИГИ : "+item.getName()+
-                                                             " || ГОД КНИГИ : "+item.getYear()+
-                                                             " || АВТОР КНИГИ : "+item.getAuthor());
-                                System.out.println(" СОДЕРЖАНИЕ КНИГИ :");
-                                          
-                                          if(item.getChapters()!=null){
-                                          
-                                                  for(String chapName :item.getChapters()){
-                                                        System.out.println((chapter++)+"."+chapName);
-                                                }
-                                          
-                                           } 
-                                           else{
-                                                   System.out.println("В КНИГЕ НЕТ СОДЕРЖАНИЯ ГЛАВ");
-                                          }
-                                
-
-                  } //switch-case
-        System.out.println();                          
-          } // if
-      } // for
+                   // Выводим на печать
+                   printBook(counter,item);
+               } // if
+          } // for
   
-    if (counter == 0)
-          System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n");
+          if (counter == 0)
+            System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n");
           
-  }
+    }
 
-	  //---------------------------------------------------------------
-	  
+	//---------------------------------------------------------------
             
-      // Метод № 4 ПОИСК КНИГИ В БИБЛИОТЕКЕ ПО ГОДУ ИЗДАНИЯ
-      public void findByYear(int findYear){
+    // Метод № 4 ПОИСК КНИГИ В БИБЛИОТЕКЕ ПО ГОДУ ИЗДАНИЯ
+    public void findByYear(int year){
 
-          	int counter = 0;
-          	int chapter = 1;
+          int counter = 0;
              
-          	System.out.println(" РЕЗУЛЬТАТЫ ПОИСКА:");
-          		for (Book item: books){
+          System.out.println(" РЕЗУЛЬТАТЫ ПОИСКА:");
+          for (Book item: books){
                    
           	 if (item == null)                 // Если добрались до пустого элемента, то дальше в библиотеке книг нет
           		 break;
          	 	 
-          	 if (item.getYear() == findYear){
+          	 if (item.getYear() == year){
                 
           		 counter++;
-                
-          		 System.out.println("--------------- КНИГА № " + counter + ": ---------------");
-             
-          		 switch((fullFormat)? 1:0){
-       
-          		  case 0:
-         		  			System.out.println(" АВТОР КНИГИ : "+item.getAuthor()+"\n" +
-         		  								" || НАЗВАНИЕ КНИГИ : "+item.getName()+"\n" +
-                              					" || ГОД КНИГИ : "+item.getYear()+"\n");
-                               
-               
-         	 			  	break;
-      
-          		  default:
-                       		System.out.println(" НАЗВАНИЕ КНИГИ : "+item.getName()+
-                           						" || ГОД КНИГИ : "+item.getYear()+
-                           						" || АВТОР КНИГИ : "+item.getAuthor());
-                       		System.out.println(" СОДЕРЖАНИЕ КНИГИ :");
-                                       
-                       		if(item.getChapters()!=null){
-                                     
-                                    for(String chapName :item.getChapters()){
-                                                     System.out.println((chapter++)+"."+chapName);
-                                     }
-                                       
-                             }
-                             else{
-                                     System.out.println("В КНИГЕ НЕТ СОДЕРЖАНИЯ ГЛАВ");
-                             }
-                             
-
-         	 		 } //switch-case
-         	 	 System.out.println();
-         	 	 } // if
+                 // Выводим на печать
+                 printBook(counter,item);
+                 
+       	 	 } // if
           } // for
 
           if (counter == 0)
          	 System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n");
        
-          }
+      }
 
 	  //---------------------------------------------------------------
 	  
 	  //Метод № 5  ПОИСК КНИГИ В БИБЛИОТЕКЕ ПО НАЗВАНИЮ
-	  public void findBook(String findName){
+	  public void findBook(String name){
 	  	
 	  	int counter = 0;	// Счётчик найденных книг
-	  	int chapter = 1;	// Индекс главы
 	  	
 	  	System.out.println(" РЕЗУЛЬТАТЫ ПОИСКА:");
 	  	for (Book item: books){ // Цикл по всем книгам в библиотеке
 	  		
-	  	 if (item == null) // Если добрались до пустого элемента, то дальше в библиотеке книг нет
-	  	  	break;
+	  		if (item == null) // Если добрались до пустого элемента, то дальше в библиотеке книг нет
+	  			break;
 	  	 
-	  	 // УСЛОВИЕ НАХОЖДЕНИЯ ПОДСТРОКИ В СТРОКЕ ПРОВЕРЕНО.  
-	  	 if (item.getName().toLowerCase().contains(findName.trim().toLowerCase())){
+	  		// УСЛОВИЕ НАХОЖДЕНИЯ ПОДСТРОКИ В СТРОКЕ ПРОВЕРЕНО.  
+	  		if (item.getName().toLowerCase().contains(name.trim().toLowerCase())){
 	  	 
-	  	 	counter++;  // Увеличиваем счётчик найденных книг
+	  			counter++;  // Увеличиваем счётчик найденных книг
 	  	 	
-			System.out.println("--------------- КНИГА № " + counter + ": ---------------");
-			
-			// Проверка установленного формата
-			switch((fullFormat)? 1:0){  
-					  
-		  	case 0:		// Вывод в консоль информации в кратком формате
-				        System.out.println(" НАЗВАНИЕ КНИГИ : "+item.getName()+
-							             " || ГОД КНИГИ : "+item.getYear()+
-							             " || АВТОР КНИГИ : "+item.getAuthor());
-				  	
-			  
-			  		break;
-		 
-		  	default:	// Вывод в консоль информации в полном формате
-					System.out.println(" НАЗВАНИЕ КНИГИ : "+item.getName()+
-							             " || ГОД КНИГИ : "+item.getYear()+
-							             " || АВТОР КНИГИ : "+item.getAuthor());
-					System.out.println(" СОДЕРЖАНИЕ КНИГИ :");
-						  // Если содержание книги не пустое
-						  if(item.getChapters()!=null){
-						  	// Выводим содержание глав книги
-						  	for(String chapName :item.getChapters()){
-								System.out.println((chapter++)+"."+chapName);
-							}
-						  
-					 	  } 
-					 	  else{ // Сообщаем об отсутствии содержания.
-					 	  	System.out.println("В КНИГЕ НЕТ СОДЕРЖАНИЯ ГЛАВ");
-						  }
-					
-	
-	  		} //switch-case
-		System.out.println();	  		
-	  	} // if
-	      } // for
+	  			// Выводим на печать
+	  			printBook(counter,item);
+
+		  	} // if
+	    } // for
 	  
 	    // Если счётчик книг равен нулю - то ничего не найдено.	  
-	    if (counter == 0)
-	  	System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n");
-	  	
+	  	if (counter == 0)
+		  	System.out.println("НИЧЕГО НЕ НАЙДЕНО!\n");
+	   	
 	  }
 	  
 	  //---------------------------------------------------------------
