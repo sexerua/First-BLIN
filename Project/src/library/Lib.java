@@ -10,10 +10,10 @@ import java.io.PrintWriter;
 
 public class Lib
 {
-	  public Book[] books; // С МАССИВОМ РАБОТАЕМ ЧЕРЕЗ НАШЫ МЕТОДЫ
+	  public Book[] books = new Book[1]; // С МАССИВОМ РАБОТАЕМ ЧЕРЕЗ НАШЫ МЕТОДЫ
 	  private boolean fullFormat = false; // ДЛЯ МЕТОДА №9  ФОРМАТ
-	  public Lib (int librarySize){
-		  this.books = new Book[librarySize];
+	  public Lib (){
+		  
 	  }
 	  
 	  // ДАЛЕЕ ВСТАВЛЯЙТЕ СВОИ МЕТОДЫ И ПРОБУЙТЕ ЗАПУСТИТЬ СВОЙ МЕТОД ЧЕРЕЗ Main СОЗДАВ ЭКЗЕМПЛЯР КЛАССА Lib
@@ -25,6 +25,12 @@ public class Lib
 	  
 	  // БАЗОВЫЙ МЕТОД ДОБАВИТЬ КНИГУ В БИБЛИОТЕКУ
 	  public void addBook (String bookName){
+		  if(books[0]!=null){//ЕСЛИ ПЕРВЫЙ ЭЛЕМЕНТ МАССИВА НЕ ПУСТОЙ (добавлена хоть одна книга) ТОГДА УВЕЛИЧИВАЕМ МАССИВ НА ОДНУ ЯЧЕЙКУ
+			    Book[] copyArray = (Book[]) books.clone();
+			    books = new Book[copyArray.length+1];
+			    System.arraycopy(copyArray, 0, books, 0, copyArray.length);
+			    }
+		  
 		  for(int i=0; i<books.length; i++){
 			  if(books[i]==null){
 				  books[i] = new Book(bookName);
@@ -36,6 +42,12 @@ public class Lib
 	  
 	  // ПЕРЕГРУЗКА БАЗОВОГО МЕТОДА ДОБАВИТЬ КНИГУ В БИБЛИОТЕКУ
 	  public void addBook (String bookName, int bookYear){
+		  if(books[0]!=null){//ЕСЛИ ПЕРВЫЙ ЭЛЕМЕНТ МАССИВА НЕ ПУСТОЙ (добавлена хоть одна книга) ТОГДА УВЕЛИЧИВАЕМ МАССИВ НА ОДНУ ЯЧЕЙКУ
+			    Book[] copyArray = (Book[]) books.clone();
+			    books = new Book[copyArray.length+1];
+			    System.arraycopy(copyArray, 0, books, 0, copyArray.length);
+			    }
+		  
 		  for(int i=0; i<books.length; i++){
 			  if(books[i]==null){
 				  books[i] = new Book(bookName,bookYear);
@@ -47,6 +59,12 @@ public class Lib
 	  
 	  // ПЕРЕГРУЗКА БАЗОВОГО МЕТОДА ДОБАВИТЬ КНИГУ В БИБЛИОТЕКУ
 	  public void addBook (String bookName, int bookYear, String bookAuthor){
+		  if(books[0]!=null){//ЕСЛИ ПЕРВЫЙ ЭЛЕМЕНТ МАССИВА НЕ ПУСТОЙ (добавлена хоть одна книга) ТОГДА УВЕЛИЧИВАЕМ МАССИВ НА ОДНУ ЯЧЕЙКУ
+			    Book[] copyArray = (Book[]) books.clone();
+			    books = new Book[copyArray.length+1];
+			    System.arraycopy(copyArray, 0, books, 0, copyArray.length);
+			    }
+		  
 		  for(int i=0; i<books.length; i++){
 			  if(books[i]==null){
 				  books[i] = new Book(bookName,bookYear,bookAuthor);
@@ -58,6 +76,12 @@ public class Lib
 	  
 	  //ПЕРЕГРУЗКА БАЗОВОГО МЕТОДА ДОБАВИТЬ КНИГУ В БИБЛИОТЕКУ
 	  public void addBook (String bookName, int bookYear, String bookAuthor, String[] bookChapters){
+		  if(books[0]!=null){//ЕСЛИ ПЕРВЫЙ ЭЛЕМЕНТ МАССИВА НЕ ПУСТОЙ (добавлена хоть одна книга) ТОГДА УВЕЛИЧИВАЕМ МАССИВ НА ОДНУ ЯЧЕЙКУ
+			    Book[] copyArray = (Book[]) books.clone();
+			    books = new Book[copyArray.length+1];
+			    System.arraycopy(copyArray, 0, books, 0, copyArray.length);
+			    }
+		  
 		  for(int i=0; i<books.length; i++){
 			  if(books[i]==null){
 				  books[i] = new Book(bookName,bookYear,bookAuthor,bookChapters);
@@ -133,7 +157,7 @@ public class Lib
                if (item.getAuthor() == null)
             	   continue;
                
-               if (item.getAuthor().toLowerCase().contains(author.trim().toLowerCase())){
+               if (item.getAuthor().toLowerCase().equals(author.trim().toLowerCase())){
                    
                    counter++;
                    // Выводим на печать
@@ -187,7 +211,7 @@ public class Lib
 	  			break;
 	  	 
 	  		// УСЛОВИЕ НАХОЖДЕНИЯ ПОДСТРОКИ В СТРОКЕ ПРОВЕРЕНО.  
-	  		if (item.getName().toLowerCase().contains(name.trim().toLowerCase())){
+	  		if (item.getName().toLowerCase().equals(name.trim().toLowerCase())){
 	  	 
 	  			counter++;  // Увеличиваем счётчик найденных книг
 	  	 	
@@ -347,7 +371,7 @@ public class Lib
 	  
 	  //---------------------------------------------------------------
 	  
-	       // МЕТОД ВЫВОДА КОЛИЧЕСТВА КНИГ В БИБЛИОТЕКЕ   
+	  // МЕТОД №11 ВЫВОДА КОЛИЧЕСТВА КНИГ В БИБЛИОТЕКЕ   
         public void myNumber(){
         	int k=0,i=0; //к - используется для хранения количества книг
         				//i - для подсчета статистики елементов
@@ -389,15 +413,28 @@ public class Lib
         }
         
                 //ПОМОЩНИК МЕТОДА ДОБАВИТЬ, ПРОВЕРЯЕТ ЧТО ВВЕЛ ПОЛЬЗОВАТЕЛЬ ЧИСЛО ИЛИ ТЕКСТ 
-        public boolean proverka(String str){
-        	try {
-        		int i = Integer.parseInt(str.trim());
-                return true;
-            } 
-            catch (NumberFormatException e) {
-            	return false;
-            }
-        }
+	public boolean proverka(String str)
+	{
+
+		try
+		{
+			str.trim();
+			char[] charArray = str.toCharArray(); // ПРОВЕРКА СКОЛЬКО ЦИФР ВВЕЛ ПОЛЬЗОВАТЕЬ В ПЕРЕМЕННУЮ ГОД КНИГИ
+			String[] strArray = new String[4];
+			if (charArray.length == 4) {
+				for (int i = 0; i < 4; i++) {
+					strArray[i] = String.valueOf(charArray[i]); // ПЕРЕВОД КАЖДОГО СИМВОЛА В СТРОКУ
+					int value = Integer.parseInt(strArray[i]);// ПРОВЕРКА ЯВЛЯЕТСЯ ЛИ ЦИФРОЙ ЭЛЕМЕНТ МАССИВА ДЛЯ ТОГО ЧТОбЫ ПОНЯТЬ ЦИФРА ЭТО ИЛИ СИМВОЛ
+				}
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
         //---------------------------------------------------------------------------------
         
         public void export() {

@@ -10,7 +10,7 @@ public class Main
 	static int position;                  //ПЕРЕМЕННАЯ ДЛЯ ОТРЕЗКИ КОМАНДЫ ОТ ВСЕЙ СТРОКИ
 	static String command;
 	static String arguments;
-	static Lib lib = new Lib(20);
+	static Lib lib = new Lib();
 	
 	private static String[] commands = {  //СПИСОК КОМАНД
 			"добавить",
@@ -68,63 +68,61 @@ public class Main
 			
 			switch (commandToRun)
 			{
-			case "добавить":           
-				String[] str = arguments.split(";");          //РАЗБИВАЕМ СТРОКУ НА МАССИВ
-				String[] mas = new String[str.length];                              //МАССИВ РАЗДЕЛЬНЫХ ЭЛЕМЕНТОВ
-				String[] chapters = null;                       //ДОП МАССИВ ДЛЯ ГЛАВ
-				
-				for (int i = 0; i < str.length; i++)       //ПЕРЕБИРАЕМ ЭЛЕМЕНТЫ СТРОКИ
-				{
-					mas[i] = str[i].trim();                //ИЗБАВЛЯЕМСЯ ОТ ЛИШНИХ ПРОБЕЛОВ
-				}
-				if(mas.length > 3)                         //ЕСЛИ ЭЛЕМЕНТОВ БОЛЬШЕ 3, ТО...
-				{
-					chapters = new String[str.length-3];       //ДОП МАССИВ ДЛЯ ГЛАВ
-					for (int i = 3; i < mas.length; i++)
+			case "добавить":
+				if(!arguments.isEmpty()) {
+					String[] str = arguments.split(";");          //РАЗБИВАЕМ СТРОКУ НА МАССИВ
+					String[] mas = new String[str.length];                              //МАССИВ РАЗДЕЛЬНЫХ ЭЛЕМЕНТОВ
+					String[] chapters = null;                       //ДОП МАССИВ ДЛЯ ГЛАВ
+					
+					for (int i = 0; i < str.length; i++)       //ПЕРЕБИРАЕМ ЭЛЕМЕНТЫ СТРОКИ
 					{
-						chapters[i-3] = mas[i];            //...ПОМЕЩАЕМ ГЛАВЫ В ДОП МАССИВ
+						mas[i] = str[i].trim();                //ИЗБАВЛЯЕМСЯ ОТ ЛИШНИХ ПРОБЕЛОВ
 					}
-				}
-
-				switch (mas.length)                        //ТУТ ОПРЕДЕЛЯЕМ КАКОЙ МЕТОД ВЫЗЫВАТЬ
-				{                                          //В ЗАВИСИМОСТИ ОТ ТОГО СКОЛЬКО ЭЛЕМЕНТОВ
-				case 1:
-					lib.addBook(mas[0]);                   //ТОЛЬКО НАЗВАНИЕ
-					break;
-				case 2:
-					if(lib.proverka(mas[1]))
-						lib.addBook(mas[0],Integer.parseInt(mas[1])); //ТОЛЬКО НАЗВАНИЕ И ГОД
-					else
-						System.out.println("Ошибка ввода года, год должен вводиться только числом и без букв.");
-					break;
-				case 3:
-					if(lib.proverka(mas[1]))
-						lib.addBook(mas[0],Integer.parseInt(mas[1]), mas[2]); //ТОЛЬКО НАЗВАНИЕ, ГОД И АВТОР
-					else
-						System.out.println("Ошибка ввода года, год должен вводиться только числом и без букв.");
-					break;
-				default:
-					if(lib.proverka(mas[1]))
-						lib.addBook(mas[0],Integer.parseInt(mas[1]), mas[2], chapters); //НАЗВАНИЕ, ГОД, АВТОР И ГЛАВЫ
-					else
-						System.out.println("Ошибка ввода года, год должен вводиться только числом и без букв.");
-					break;
-				}
+					if(mas.length > 3)                         //ЕСЛИ ЭЛЕМЕНТОВ БОЛЬШЕ 3, ТО...
+					{
+						chapters = new String[str.length-3];       //ДОП МАССИВ ДЛЯ ГЛАВ
+						for (int i = 3; i < mas.length; i++)
+						{
+							chapters[i-3] = mas[i];            //...ПОМЕЩАЕМ ГЛАВЫ В ДОП МАССИВ
+						}
+					}
+	
+					switch (mas.length)                        //ТУТ ОПРЕДЕЛЯЕМ КАКОЙ МЕТОД ВЫЗЫВАТЬ
+					{                                          //В ЗАВИСИМОСТИ ОТ ТОГО СКОЛЬКО ЭЛЕМЕНТОВ
+					case 1:
+						lib.addBook(mas[0]);                   //ТОЛЬКО НАЗВАНИЕ
+						break;
+					case 2:
+						if(lib.proverka(mas[1]))
+							lib.addBook(mas[0],Integer.parseInt(mas[1])); //ТОЛЬКО НАЗВАНИЕ И ГОД
+						else
+							System.out.println("Ошибка ввода года, год должен вводиться только числом и без букв.");
+						break;
+					case 3:
+						if(lib.proverka(mas[1]))
+							lib.addBook(mas[0],Integer.parseInt(mas[1]), mas[2]); //ТОЛЬКО НАЗВАНИЕ, ГОД И АВТОР
+						else
+							System.out.println("Ошибка ввода года, год должен вводиться только числом и без букв.");
+						break;
+					default:
+						if(lib.proverka(mas[1]))
+							lib.addBook(mas[0],Integer.parseInt(mas[1]), mas[2], chapters); //НАЗВАНИЕ, ГОД, АВТОР И ГЛАВЫ
+						else
+							System.out.println("Ошибка ввода года, год должен вводиться только числом и без букв.");
+						break;
+					}
+				} else 
+					System.out.println("Ведите хотя бы название книги.");
+				
 				break;
 				
 			case "просмотр":
 				if(arguments.isEmpty())
 					lib.printAllBooks();
-				else
-				try{	
-					int year = Integer.parseInt(arguments);
-					lib.findByYear(year);
-				}	
-								
-				catch(NumberFormatException e){
-					lib.findByAuthor(arguments);					
-				}	
-				
+				else if(!lib.proverka(arguments))
+					lib.findByAuthor(arguments);
+				else if(lib.proverka(arguments))
+					lib.findByYear(Integer.parseInt(arguments));				
 				break;
 				
 			case "найти":
