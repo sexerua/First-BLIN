@@ -25,12 +25,13 @@ public class Lib
 	  
 	  // БАЗОВЫЙ МЕТОД ДОБАВИТЬ КНИГУ В БИБЛИОТЕКУ
 	  public void addBook (String bookName){
+		  //Вот от сюда
 		  if(books[0]!=null){//ЕСЛИ ПЕРВЫЙ ЭЛЕМЕНТ МАССИВА НЕ ПУСТОЙ (добавлена хоть одна книга) ТОГДА УВЕЛИЧИВАЕМ МАССИВ НА ОДНУ ЯЧЕЙКУ
 			    Book[] copyArray = (Book[]) books.clone();
 			    books = new Book[copyArray.length+1];
 			    System.arraycopy(copyArray, 0, books, 0, copyArray.length);
 			    }
-		  
+		  //И вот сюда в один метод... он часто повторяется
 		  for(int i=0; i<books.length; i++){
 			  if(books[i]==null){
 				  books[i] = new Book(bookName);
@@ -373,13 +374,12 @@ public class Lib
 	  
 	  // МЕТОД №11 ВЫВОДА КОЛИЧЕСТВА КНИГ В БИБЛИОТЕКЕ   
         public void myNumber(){
-        	int k=0,i=0; //к - используется для хранения количества книг
-        				//i - для подсчета статистики елементов
+        	int i=0;     //i - для подсчета статистики елементов
             //ОПРЕДЕЛЯЕМ КОЛИЧЕСТВО КНИГ
-        	for(int j=0; j<books.length; j++){
-            if(books[k]!=null) k++;
-            }
-        	System.out.println("КОЛИЧЕСТВО КНИГ В БЫБЛИОТЕКЕ = "+k);
+        
+            if(books[0]==null) System.out.println("КОЛИЧЕСТВО КНИГ В БЫБЛИОТЕКЕ = 0");
+            System.out.println("КОЛИЧЕСТВО КНИГ В БЫБЛИОТЕКЕ = "+books.length);
+        	
         	try{											//ну вы поняли что это  (:
         	
         	if (fullFormat=true){ //ДЛЯ ВИВОДА ДЕТАЛЬНОЙ СТАТИСТИКИ ЕСЛИ ВКЛЮЧУН ФОРМАТ
@@ -387,21 +387,21 @@ public class Lib
         		System.out.println(" ИЗ НИХ");
         		
         		//ПЕРЕБОР КОЛИЧЕСТВА КНИГ С УКАЗАНЫМ ГОДОМ
-        		for(int j=0; j<k; j++){
+        		for(int j=0; j<books.length; j++){
                   if(books[j].getYear() != 0) i++; 
         		}
         		System.out.println("С УКАЗАНЫМ ГОДОМ НАПИСАНИЯ "+i);
         		
         		//ПЕРЕБОР КОЛИЧЕСТВА КНИГ С УКАЗАНЫМ АВТОРОМ
         		i=0;										//обнуляем для нового подсчета
-        		for(int j=0; j<k; j++){
+        		for(int j=0; j<books.length; j++){
                     if(books[j].getAuthor()!= null) i++;
         		}
         		System.out.println("С УКАЗАНЫМ АВТОРОМ "+i);
         		
         		//ПЕРЕБОР КОЛИЧЕСТВА КНИГ С УКАЗАНЫМИ Главами
         		i=0;
-        		for(int j=0; j<k; j++){
+        		for(int j=0; j<books.length; j++){
                     if(books[j].getChapters()!= null) i++; 
         		}
         		System.out.println("С НАЛИЧИЕМ ГЛАВ "+i);
