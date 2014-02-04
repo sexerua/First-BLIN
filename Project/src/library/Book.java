@@ -6,7 +6,7 @@ public class Book
 	private String name;                 //Название книги
 	private String author;              //Автор книги
 	private String [] chapters;        //Список глав книги
-	private int year;                 //Год издательства книги
+	private String year;                 //Год издательства книги
 	private boolean chosen = false;  //Является ли избранным
 	
 	
@@ -15,18 +15,18 @@ public class Book
 		this.name = name;
 		this.chosen = false;
 	}
-	public Book(String name, int year){
+	public Book(String name, String year){
 		this.name = name;
 		this.year = year;
 		this.chosen = false;
 	}
-	public Book(String name, int year, String author){
+	public Book(String name, String year, String author){
 		this.name = name;
 		this.author = author;
 		this.year = year;
 		this.chosen = false;
 	}
-	public Book(String name, int year, String author, String[] chapters){
+	public Book(String name, String year, String author, String[] chapters){
 		this.name = name;
 		this.chapters = chapters;
 		this.author = author;
@@ -59,11 +59,11 @@ public class Book
 	{
 		this.chapters = chapters;
 	}
-	public int getYear()            // получить название
+	public String getYear()            // получить название
 	{
 		return year;
 	}
-	public void setYear(int year)    // записать название
+	public void setYear(String year)    // записать название
 	{
 		this.year = year;
 	}

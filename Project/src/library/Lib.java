@@ -23,73 +23,41 @@ public class Lib
 	  
 	  
 	  
-	  // БАЗОВЫЙ МЕТОД ДОБАВИТЬ КНИГУ В БИБЛИОТЕКУ
-	  public void addBook (String bookName){
-		  //Вот от сюда
+	  // БАЗОВЫЙ МЕТОД ДОБАВИТЬ КНИГУ В БИБЛИОТЕКУ 
+	  public void addBook(String...arguments) {
 		  if(books[0]!=null){//ЕСЛИ ПЕРВЫЙ ЭЛЕМЕНТ МАССИВА НЕ ПУСТОЙ (добавлена хоть одна книга) ТОГДА УВЕЛИЧИВАЕМ МАССИВ НА ОДНУ ЯЧЕЙКУ
 			    Book[] copyArray = (Book[]) books.clone();
 			    books = new Book[copyArray.length+1];
 			    System.arraycopy(copyArray, 0, books, 0, copyArray.length);
 			    }
-		  //И вот сюда в один метод... он часто повторяется
-		  for(int i=0; i<books.length; i++){
+		  for(int i=0; i<books.length; i++)
+		  {
 			  if(books[i]==null){
-				  books[i] = new Book(bookName);
-				  break;
+				  switch (arguments.length)
+					{
+					case 1:
+						books[i] = new Book(arguments[0]);
+						break;
+						
+					case 2:
+						books[i] = new Book(arguments[0], arguments[1]);
+						break;
+						
+					case 3:
+						books[i] = new Book(arguments[0], arguments[1], arguments[2]);
+						break;
+						
+					default:
+						String[] chapters = new String[arguments.length-3];
+						for (int j = 0; j < arguments.length-3; j++) {
+							chapters[j] = arguments[j+3];
+						}
+						books[i] = new Book(arguments[0], arguments[1], arguments[2], chapters);
+						break;
+					}
 			  }
 		  }
-		  System.out.println("КНИГА "+bookName+" УСПЕШНО ДОБАВЛЕНА В БИБЛИОТЕКУ");
-	  }
-	  
-	  // ПЕРЕГРУЗКА БАЗОВОГО МЕТОДА ДОБАВИТЬ КНИГУ В БИБЛИОТЕКУ
-	  public void addBook (String bookName, int bookYear){
-		  if(books[0]!=null){//ЕСЛИ ПЕРВЫЙ ЭЛЕМЕНТ МАССИВА НЕ ПУСТОЙ (добавлена хоть одна книга) ТОГДА УВЕЛИЧИВАЕМ МАССИВ НА ОДНУ ЯЧЕЙКУ
-			    Book[] copyArray = (Book[]) books.clone();
-			    books = new Book[copyArray.length+1];
-			    System.arraycopy(copyArray, 0, books, 0, copyArray.length);
-			    }
-		  
-		  for(int i=0; i<books.length; i++){
-			  if(books[i]==null){
-				  books[i] = new Book(bookName,bookYear);
-				  break;
-			  }
-		  }
-		  System.out.println("КНИГА "+bookName+" УСПЕШНО ДОБАВЛЕНА В БИБЛИОТЕКУ");
-	  }
-	  
-	  // ПЕРЕГРУЗКА БАЗОВОГО МЕТОДА ДОБАВИТЬ КНИГУ В БИБЛИОТЕКУ
-	  public void addBook (String bookName, int bookYear, String bookAuthor){
-		  if(books[0]!=null){//ЕСЛИ ПЕРВЫЙ ЭЛЕМЕНТ МАССИВА НЕ ПУСТОЙ (добавлена хоть одна книга) ТОГДА УВЕЛИЧИВАЕМ МАССИВ НА ОДНУ ЯЧЕЙКУ
-			    Book[] copyArray = (Book[]) books.clone();
-			    books = new Book[copyArray.length+1];
-			    System.arraycopy(copyArray, 0, books, 0, copyArray.length);
-			    }
-		  
-		  for(int i=0; i<books.length; i++){
-			  if(books[i]==null){
-				  books[i] = new Book(bookName,bookYear,bookAuthor);
-				  break;
-			  }
-		  }
-		  System.out.println("КНИГА "+bookName+" УСПЕШНО ДОБАВЛЕНА В БИБЛИОТЕКУ");
-	  }
-	  
-	  //ПЕРЕГРУЗКА БАЗОВОГО МЕТОДА ДОБАВИТЬ КНИГУ В БИБЛИОТЕКУ
-	  public void addBook (String bookName, int bookYear, String bookAuthor, String[] bookChapters){
-		  if(books[0]!=null){//ЕСЛИ ПЕРВЫЙ ЭЛЕМЕНТ МАССИВА НЕ ПУСТОЙ (добавлена хоть одна книга) ТОГДА УВЕЛИЧИВАЕМ МАССИВ НА ОДНУ ЯЧЕЙКУ
-			    Book[] copyArray = (Book[]) books.clone();
-			    books = new Book[copyArray.length+1];
-			    System.arraycopy(copyArray, 0, books, 0, copyArray.length);
-			    }
-		  
-		  for(int i=0; i<books.length; i++){
-			  if(books[i]==null){
-				  books[i] = new Book(bookName,bookYear,bookAuthor,bookChapters);
-				  break;
-			  }
-		  }
-		  System.out.println("КНИГА "+bookName+" УСПЕШНО ДОБАВЛЕНА В БИБЛИОТЕКУ");
+		  System.out.println("КНИГА "+arguments[0]+" УСПЕШНО ДОБАВЛЕНА В БИБЛИОТЕКУ");
 	  }
 	  
 	  
@@ -174,7 +142,7 @@ public class Lib
 	//---------------------------------------------------------------
             
     // Метод № 4 ПОИСК КНИГИ В БИБЛИОТЕКЕ ПО ГОДУ ИЗДАНИЯ
-    public void findByYear(int year){
+    public void findByYear(String year){
 
           int counter = 0;
              
@@ -184,7 +152,7 @@ public class Lib
           	 if (item == null)                 // Если добрались до пустого элемента, то дальше в библиотеке книг нет
           		 break;
          	 	 
-          	 if (item.getYear() == year){
+          	 if (item.getYear().equals(year)){
                 
           		 counter++;
                  // Выводим на печать
@@ -388,7 +356,7 @@ public class Lib
         		
         		//ПЕРЕБОР КОЛИЧЕСТВА КНИГ С УКАЗАНЫМ ГОДОМ
         		for(int j=0; j<books.length; j++){
-                  if(books[j].getYear() != 0) i++; 
+                  if(!books[j].getYear().equals("0")) i++; 
         		}
         		System.out.println("С УКАЗАНЫМ ГОДОМ НАПИСАНИЯ "+i);
         		
